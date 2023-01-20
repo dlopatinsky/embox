@@ -1,0 +1,12 @@
+package third_party.bsp.rcm1888bc048
+
+@Build(stage=1,script="true")
+@BuildArtifactPath(cppflags="-I$(ROOT_DIR)/third-party/bsp/rcm1888bc048/inc/")
+static module core {
+	@IncludePath("$(ROOT_DIR)/third-party/bsp/rcm1888bc048/inc")
+	source "src/1888bc048_arinc.c",
+	       "src/1888bc048_gpio.c",
+	       "src/1888bc048_spi.c",
+		   "src/1888bc048_uart.c",
+		   "src/1888bc048_can.c"
+}
