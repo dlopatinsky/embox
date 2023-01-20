@@ -1,0 +1,13 @@
+package embox.driver.serial
+
+//@BuildDepends(third_party.bsp.rcm1888bc048.core)
+module rcm1888bc048_muart_diag extends embox.driver.diag.diag_api {
+	option number uart_base = 0x01044000
+	option number baud_rate = 115200
+
+	//source "rcm1888bc048_muart_diag.c"
+
+	source "muart_diag.c"
+	//depends third_party.bsp.rcm1888bc048.core
+}
+
