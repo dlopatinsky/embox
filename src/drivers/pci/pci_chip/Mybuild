@@ -39,3 +39,15 @@ module gpex extends pci_chip {
 	@IncludeExport(path="drivers/pci/pci_chip")
 	source "pci_utils.h"
 }
+
+@BuildDepends(third_party.bsp.rcm1888bc048.core)
+module pci_chip_rcm1888bc048 extends pci_chip {
+	option number log_level=1
+	
+	source "pci_chip_rcm1888bc048.c"
+
+	@IncludeExport(path="drivers/pci/pci_chip")
+	source "pci_utils.h"
+	depends third_party.bsp.rcm1888bc048.core
+}
+
