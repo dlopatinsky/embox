@@ -1,0 +1,12 @@
+package embox.driver.interrupt
+
+module rcm1888bc048_gic extends embox.driver.interrupt.irqctrl_api {
+	option number cpu_base_addr
+	option number distributor_base_addr
+	option number log_level=0
+
+	source "rcm1888bc048_gic.c"
+	source "rcm1888bc048_gic.h"
+
+	depends embox.driver.periph_memory
+}
