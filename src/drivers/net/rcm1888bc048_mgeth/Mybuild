@@ -1,0 +1,24 @@
+package embox.driver.net
+
+@BuildDepends(third_party.bsp.rcm1888bc048.core)
+module rcm1888bc048_mgeth {
+	source "rcm1888bc048_mgeth.c"
+	source "rcm1888bc048_sgmii.c"
+	
+	@IncludeExport(path="drivers/net")
+	source "rcm1888bc048_sgmii.h"
+
+	option number mgeth_base=0x01014000
+	option number irq_num=51
+
+	option number log_level=1
+	depends embox.net.skbuff
+	depends embox.net.l2.ethernet
+	depends embox.kernel.irq_api
+	depends embox.net.dev
+	depends embox.net.entry_api
+	depends embox.net.core
+	depends embox.net.util.show_packet
+	depends embox.compat.posix.util.sleep
+	depends third_party.bsp.rcm1888bc048.core
+}
