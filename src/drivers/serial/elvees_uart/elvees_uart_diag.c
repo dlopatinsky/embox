@@ -35,11 +35,17 @@ static int elvees_uart_setup(struct uart *dev, const struct uart_params *params)
 #else
 
 #include <drivers/gpio/gpio_driver.h>
+
+#define PIN_RX_PORT      OPTION_GET(NUMBER, pin_rx_port)
+#define PIN_RX_PIN       OPTION_GET(NUMBER, pin_rx_pin)
+#define PIN_TX_PORT      OPTION_GET(NUMBER, pin_tx_port)
+#define PIN_TX_PIN       OPTION_GET(NUMBER, pin_tx_pin)
+
 static int elvees_uart_setup(struct uart *dev, const struct uart_params *params) {
 #define GPIO_ALT_FUNC_UART   (4)
 
-	gpio_setup_mode(3, 1 << 0, GPIO_MODE_OUT_ALTERNATE | GPIO_ALTERNATE(GPIO_ALT_FUNC_UART));
-	gpio_setup_mode(3, 1 << 1, GPIO_MODE_OUT_ALTERNATE | GPIO_ALTERNATE(GPIO_ALT_FUNC_UART));
+	gpio_setup_mode(PIN_RX_PORT, 1 << PIN_RX_PIN, GPIO_MODE_OUT_ALTERNATE | GPIO_ALTERNATE(GPIO_ALT_FUNC_UART));
+	gpio_setup_mode(PIN_TX_PORT, 1 << PIN_TX_PIN, GPIO_MODE_OUT_ALTERNATE | GPIO_ALTERNATE(GPIO_ALT_FUNC_UART));
 
 	elvees_uart_setup_common(dev, params);
 
